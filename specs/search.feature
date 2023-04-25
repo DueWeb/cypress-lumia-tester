@@ -42,4 +42,3 @@ Feature: Search
     And I should see the product "Lampett"
     And I should see the product "Taklampa"  
 
-
