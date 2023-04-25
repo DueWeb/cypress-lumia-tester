@@ -1,13 +1,12 @@
-Feature: Add to cart and to verify the price
-  As a user I want to be able to add products
+Feature: Add to cart
+  as a user i want to be able to add products
   to the cart, so that I can buy them.
 
-
-  Background: Start from first page
-    Given That i need to be on the first page
+  Background: That I am on the home page
+    Given that I am on the start page
 
   Scenario Outline: Adding "<quantity>" "<product>" to the cart
-    When that i have searched for "<product>"
+    When That I have searched for "<product>"
     And I click the buy button "<quantity>" time
     Then "<quantity>" "<product>" should be added to the cart
 
@@ -15,28 +14,32 @@ Feature: Add to cart and to verify the price
       | product    | quantity |
       | Bordslampa | 1        |
       | Bordslampa | 2        |
+      | Bordslampa | 3        |
       | Golvlampa  | 1        |
       | Golvlampa  | 2        |
-      | Golvlampa  | 3        |
 
-  Scenario: calculating the price for "3" "Bordslampor"
-    When That the user search for "Bordslampa"
-    And Added the product to the cart "3" times
-    Then the price will be correct
 
-  Scenario: calculating the price for "8" "Golvlampor"
-    When That the user search for "Golvlampa"
+  Scenario: Validating the price if its correct for "2" "Golvlampa"
+    When That I search for "Golvlampa"
+    And Added the product to the cart "2" times
+    Then The price should be correct
+
+  Scenario: Validating the price if its correct for "5" "Golvlampor"
+    When That I search for "Golvlampa"
+    And Added the product to the cart "5" times
+    Then The price should be correct
+
+  Scenario: Validating the price if its correct for "2" "Spotlights"
+    When That I search for "Spotlight"
+    And Added the product to the cart "2" times
+    Then The price should be correct
+
+  Scenario: Validating the price if its correct for "5" "Taklampor"
+    When That I search for "Taklampa"
+    And Added the product to the cart "5" times
+    Then The price should be correct
+
+  Scenario: Validating the price if its correct for "8" "Bordslampor"
+    When That I search for "Bordslampa"
     And Added the product to the cart "8" times
-    Then the price will be correct
-
-
-  Scenario: calculating the price for "1" "Lampetter"
-    When That the user search for "Lampett"
-    And Added the product to the cart "1" times
-    Then the price will be correct
-
-
-  Scenario: calculating the price for "10" "Spotlights"
-    When That the user search for "Spotlight"
-    And Added the product to the cart "10" times
-    Then the price will be correct
+    Then The price should be correct
