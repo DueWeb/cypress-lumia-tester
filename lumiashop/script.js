@@ -34,19 +34,56 @@ function add(product) {
   } else {
     theItem[0].count++;
   }
+  renderCart();
+}
+
+function renderCart() {
   let total = 0;
   $('#cart ul').html('');
   for (let item of items) {
     total += (item.count * item.price);
-    $('#cart ul').append('<li>' + item.name + '<span>(' + item.price + 'kr,</span><span>' + item.count + 'st)</span><span>' + (item.count * item.price) + 'kr</span></li>')
+    $('#cart ul').append('<li><span class="name">' + item.name + '</span>'
+      + '<span>(' + item.price + 'kr,</span><span>' + item.count
+      + 'st)</span><span>' + (item.count * item.price)
+      + 'kr</span><span><button class="removeOne">-</button><button class="addOne">+</button></li>')
   }
   $('#cart ul').append('<li class="total">Total <span>' + total + '</span></li>');
 }
 
+// connect clicks on removeOne and addOne buttons to functions
+// (add event listening)
+$(document).on('click', '.removeOne', removeOne);
+$(document).on('click', '.addOne', addOne);
+
+function removeOne() {
+  let itemName = $(this).parents('li').find('.name').text();
+  for (let item of items) {
+    if (item.name === itemName) {
+      item.count--;
+      if (item.count < 1) {
+        items = items.filter(item => item.name !== itemName);
+        break;
+      }
+    }
+  }
+  renderCart();
+}
+
+function addOne() {
+  let itemName = $(this).parents('li').find('.name').text();
+  for (let item of items) {
+    if (item.name === itemName) {
+      item.count++;
+    }
+  }
+  renderCart();
+}
+
+
 
 let total = 12345;
 
-function renderCheckout(){
+function renderCheckout() {
   $('#checkout').remove()
   $('#cart').append(`
     <div class="cover">
@@ -72,10 +109,10 @@ function renderCheckout(){
 
 $('body').on('submit', '#checkout', pay)
 
-function pay(e){
+function pay(e) {
   e.preventDefault()
   $('#checkout').remove()
-  alert("paying " + total )
+  alert("paying " + total)
   items.length = 0
   $('#cart ul').html('');
 }
