@@ -1,6 +1,6 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 
-Given('that I am on the start page', () => {
+Given('that I am on the starting page', () => {
   // Goto the start page
   cy.visit('/');
 });
@@ -16,6 +16,6 @@ Then('I should see the product {string}', (productName) => {
   // and check that the product is visible
   cy.get('div.product h2')
     .contains(productName)
-    .parents('div.product')
+    .parentsUntil('div.product')
     .should('be.visible');
 });
