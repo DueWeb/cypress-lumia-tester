@@ -32,6 +32,7 @@ Then('there should be {string} {string} added in the cart', (quantity, productNa
   // find a li (list item) in the cart that contains the product name
   cy.get('#cart li')
     .contains(productName)
+    .parents('li')
     .contains(quantity + 'st')
     .should('have.length', 1);
 });

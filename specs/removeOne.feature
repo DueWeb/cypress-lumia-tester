@@ -8,27 +8,27 @@ Background:
 Scenario: Remove "1" "Bordslampa" from the cart
     And that I have searched for "Bordslampa"
     When I click the buy button "2" times
-    Then there is "2" "Bordslampa" in the cart
+    Then there should be "2" "Bordslampa" left in the cart
     And I click the removeOne button "1" times
     Then there should be "1" "Bordslampa" left in the cart
 
 Scenario: Remove "2" "Golvlampa" from the cart
-    And that I have searched for "Bordslampa"
+    And that I have searched for "Golvlampa"
     When I click the buy button "3" times
-    Then there is "3" "Golvlampa" in the cart
+    Then there should be "3" "Golvlampa" left in the cart
     And I click the removeOne button "2" times
     Then there should be "1" "Golvlampa" left in the cart  
 
 Scenario: Remove "5" "Spotlight" from the cart
     And that I have searched for "Spotlight"
     When I click the buy button "9" times
-    Then there is "9" "Spotlight" in the cart
+    Then there should be "9" "Spotlight" left in the cart
     And I click the removeOne button "5" times
     Then there should be "4" "Spotlight" left in the cart 
 
 Scenario: Remove "7" "Lampett" from the cart
     And that I have searched for "Lampett"
     When I click the buy button "8" times
-    Then there is "8" "Lampett" in the cart
+    Then there should be "8" "Lampett" left in the cart
     And I click the removeOne button "7" times
     Then there should be "1" "Lampett" left in the cart          

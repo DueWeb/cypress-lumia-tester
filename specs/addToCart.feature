@@ -20,19 +20,19 @@ Scenario Outline: Adding "<quantity>" "<product>" to the cart
 Scenario: Adding "2" "Bordslampa" to the cart
     And that I have searched for "Bordslampa"
     When I click the buy button "2" times
-    Then there should be "2" "Bordslampa" added to the cart
+    Then there should be "2" "Bordslampa" added in the cart
 
 Scenario: Adding "3" "Golvlampa" to the cart
     And that I have searched for "Golvlampa"
     When I click the buy button "3" times
-    Then there should be "3" "Golvlampa" added to the cart
+    Then there should be "3" "Golvlampa" added in the cart
 
 Scenario: Adding "9" "Spotlight" to the cart
     And that I have searched for "Spotlight"
     When I click the buy button "9" times
-    Then there should be "9" "Bordslampa" added to the cart
+    Then there should be "9" "Spotlight" added in the cart
 
 Scenario: Adding "7" "Lampett" to the cart
     And that I have searched for "Lampett"
     When I click the buy button "7" times
-    Then there should be "7" "Golvlampa" added in the cart
+    Then there should be "7" "Lampett" added in the cart
