@@ -28,15 +28,6 @@ When('I click the buy button {string} times', (clickCount) => {
   }
 });
 
-Then('there should be {string} {string} added in the cart', (quantity, productName) => {
-  // find a li (list item) in the cart that contains the product name
-  cy.get('#cart li')
-    .contains(productName)
-    .parents('li')
-    .contains(quantity + 'st')
-    .should('have.length', 1);
-});
-
 //remove
 When('I click the removeOne button {string} times', (clickCount) => {
   for (let i = 1; i <= +clickCount; i++) {
@@ -47,6 +38,16 @@ When('I click the removeOne button {string} times', (clickCount) => {
       .click();
   }
 });
+
+Then('there should be {string} {string} added in the cart', (quantity, productName) => {
+  // find a li (list item) in the cart that contains the product name
+  cy.get('#cart li')
+    .contains(productName)
+    .parents('li')
+    .contains(quantity + 'st')
+    .should('have.length', 1);
+});
+
 //check quantity
 
 Then('there should be {string} {string} left in the cart', (quantity, productName) => {
