@@ -29,7 +29,7 @@ When('I click the buy button {string} times', (clickCount) => {
 });
 
 //remove
-When('I click the removeOne button {string} times', (clickCount) => {
+When('I click the remove button {string} times', (clickCount) => {
   for (let i = 1; i <= +clickCount; i++) {
     cy.log("searchedFor", searchedFor);
     cy.get('#cart li').contains(searchedFor)
@@ -51,7 +51,7 @@ Then('there should be {string} {string} added in the cart', (quantity, productNa
 //check quantity
 
 Then('there should be {string} {string} left in the cart', (quantity, productName) => {
-  cy.log(productName,quantity)
+  cy.log(productName, quantity)
   cy.get('#cart li')
     .contains(productName)
     .parents('li')
